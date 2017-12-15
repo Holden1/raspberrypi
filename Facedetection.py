@@ -10,7 +10,8 @@ camera=picamera.PiCamera()
 # camera.stop_preview()
 camera.hflip = True
 camera.vflip = True
-camera.capture('image.jpg')
+camera.resolution = (1024, 768)
+camera.framerate = 30
 
 
 highResCap = PiRGBArray(camera)
