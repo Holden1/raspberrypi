@@ -24,14 +24,18 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 while True:
+    print("In loop")
     start=time.clock()
 
     stream = io.BytesIO()
     # capture into stream
+    print("Capturing")
     camera.capture(stream, format='jpeg', use_video_port=True)
     # convert image into numpy array
+    print("Convert to data")
     data = np.fromstring(stream.getvalue(), dtype=np.uint8)
     # turn the array into a cv2 image
+    print("convert to img")
     img = cv2.imdecode(data, 1)
     #cv2.imshow("preview", frame)
     # hrs = highResStream.__next__()
