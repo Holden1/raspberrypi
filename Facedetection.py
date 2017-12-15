@@ -43,7 +43,7 @@ while True:
     # highResStream.truncate(0)
     #img = cv2.imread('image.jpg')
 
-
+    print("after to img")
     r = 1000.0 / img.shape[1]
     dim = (1000, int(img.shape[0] * r))
     img=cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
