@@ -26,7 +26,7 @@ hrs = highResStream.__next__()
 while True:
     start=time.clock()
     #cv2.imshow("preview", frame)
-    hrs = hrs.__next__()
+    hrs = highResStream.__next__()
     img=hrs.array
     #img = cv2.imread('image.jpg')
 
