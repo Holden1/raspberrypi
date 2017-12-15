@@ -1,6 +1,13 @@
 import numpy as np
 import cv2
 import time
+import picamera
+
+
+camera=picamera.PiCamera()
+camera.start_preview()
+time.sleep(5)
+camera.stop_preview()
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
