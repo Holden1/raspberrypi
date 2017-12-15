@@ -21,12 +21,12 @@ print("done warming up")
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
-hrs = highResStream.next()
+hrs = highResStream.__next__()
 
 while True:
     start=time.clock()
     #cv2.imshow("preview", frame)
-    hrs = hrs.next()
+    hrs = hrs.__next__()
     img=hrs.array
     #img = cv2.imread('image.jpg')
 
