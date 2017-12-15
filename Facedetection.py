@@ -8,6 +8,7 @@ camera=picamera.PiCamera()
 # camera.start_preview()
 # time.sleep(5)
 # camera.stop_preview()
+camera.hflip = True
 camera.capture('image.jpg')
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
