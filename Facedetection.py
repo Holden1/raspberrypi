@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 import picamera
-
+from picamera.array import PiRGBArray
 
 camera=picamera.PiCamera()
 # camera.start_preview()
@@ -12,18 +12,22 @@ camera.hflip = True
 camera.vflip = True
 camera.capture('image.jpg')
 
+
+highResCap = PiRGBArray(camera)
+highResStream = camera.capture_continuous(highResCap, format="bgr", use_video_port=True)
+time.sleep(2.0)
+print("done warming up")
+
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
-vc = cv2.VideoCapture(0)
-if vc.isOpened(): # try to get the first frame
-    rval, frame = vc.read()
-else:
-    rval = False
-while rval:
+hrs = highResStream.next()
+
+while True:
     start=time.clock()
     #cv2.imshow("preview", frame)
-    rval, img = vc.read()
+    hrs = hrs.next()
+    img=hrs.array
     #img = cv2.imread('image.jpg')
 
 
