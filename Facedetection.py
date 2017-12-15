@@ -1,4 +1,5 @@
 import numpy as np
+import io
 import cv2
 import time
 import picamera
@@ -24,10 +25,18 @@ eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 while True:
     start=time.clock()
+
+    stream = io.BytesIO()
+    # capture into stream
+    camera.capture(stream, format='jpeg', use_video_port=True)
+    # convert image into numpy array
+    data = np.fromstring(stream.getvalue(), dtype=np.uint8)
+    # turn the array into a cv2 image
+    img = cv2.imdecode(data, 1)
     #cv2.imshow("preview", frame)
-    hrs = highResStream.__next__()
-    img=hrs.array
-    highResStream.truncate(0)
+    # hrs = highResStream.__next__()
+    # img=hrs.array
+    # highResStream.truncate(0)
     #img = cv2.imread('image.jpg')
 
 
