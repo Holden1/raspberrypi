@@ -25,7 +25,7 @@ servo_val=130
 errorX=0
 errorY=0
 
-kP=0.1
+kP=0.2
 kI=0
 kD=0
 
