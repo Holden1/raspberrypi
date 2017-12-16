@@ -28,7 +28,7 @@ while True:
     start=time.clock()
     stream = io.BytesIO()
     # capture into stream
-    camera.capture(stream, format='jpeg', use_video_port=True)
+    camera.capture(stream, format='bgr', use_video_port=True)
     # convert image into numpy array
     data = np.fromstring(stream.getvalue(), dtype=np.uint8)
     # turn the array into a cv2 image
