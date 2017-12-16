@@ -16,7 +16,7 @@ camera.vflip = True
 resX=160
 resY=120
 camera.resolution = (resX, resY)
-camera.framerate = 30
+camera.framerate = 60
 
 min_servo_val=70
 max_servo_val=200
