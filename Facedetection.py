@@ -12,8 +12,8 @@ camera=picamera.PiCamera()
 # camera.stop_preview()
 camera.hflip = True
 camera.vflip = True
-resX=1024
-resY=768
+resX=320
+resY=240
 camera.resolution = (resX, resY)
 camera.framerate = 30
 
@@ -53,7 +53,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     #print("Before gray")
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #print("Before finding faces")
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    faces = face_cascade.detectMultiScale(gray, 1.1, 5)
     errorX=0
     #print("num faces: ",len(faces))
     for (x,y,w,h) in faces:
