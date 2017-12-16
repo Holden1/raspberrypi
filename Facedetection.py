@@ -13,8 +13,8 @@ camera=picamera.PiCamera()
 # camera.stop_preview()
 camera.hflip = True
 camera.vflip = True
-resX=160
-resY=120
+resX=1024
+resY=768
 camera.resolution = (resX, resY)
 camera.framerate = 10
 
@@ -26,7 +26,7 @@ errorX=0
 errorXSum=0
 errorY=0
 
-kP=0.07
+kP=0.2
 kI=0.0
 kD=0
 
@@ -36,8 +36,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 roi_gray=None
-width=None
-height=None
+roi=None
 template_threshold=0.9
 
 for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=True):
@@ -56,9 +55,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     # print("Before resize")
     #
     # img=cv2.resize(img, dim, interpolation = cv2.INTER_NEAREST)
-    #print("Before gray")
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    #print("Before finding faces")
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
     ##template matching?
@@ -70,7 +67,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
             top_left=max_loc
             if(np.any(res>max_val)):
-                faces=[[top_left[0],top_left[1],top_left[0] + width, top_left[1] + height]]
+                faces=[[top_left[0],top_left[1],top_left[0] + roi[2], top_left[1] + roi[3]]]
 
 
     errorX=0
@@ -78,8 +75,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     for (x,y,w,h) in faces:
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
-        width=w
-        height=h
+        roi=[x,y,w,h]
         # roi_color = gray[y:y+h, x:x+w]
         center=[x+(w/2),y+(h/2)]
         print("Center",center)
