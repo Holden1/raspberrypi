@@ -13,8 +13,8 @@ camera=picamera.PiCamera()
 # camera.stop_preview()
 camera.hflip = True
 camera.vflip = True
-resX=320/2
-resY=240/2
+resX=160
+resY=120
 camera.resolution = (resX, resY)
 camera.framerate = 30
 
