@@ -23,10 +23,11 @@ max_servo_val=200
 servo_val=130
 
 errorX=0
+errorXSum=0
 errorY=0
 
 kP=0.2
-kI=0
+kI=0.01
 kD=0
 
 highResCap = PiRGBArray(camera)
@@ -68,7 +69,9 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
         # eyes = eye_cascade.detectMultiScale(roi_gray)
         # for (ex,ey,ew,eh) in eyes:
         #     cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
-    servo_val=servo_val+(errorX*kP)
+
+    errorXSum+=errorX
+    servo_val=servo_val+(errorX*kP)+(errorXSum*kI)
     servo_val=np.clip(servo_val,min_servo_val,max_servo_val)
     os.system("echo"+" 2="+str(servo_val)+" > /dev/servoblaster")
     print(time.clock()-start)
