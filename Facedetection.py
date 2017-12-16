@@ -40,15 +40,18 @@ while True:
     # print("Before resize")
     #
     # img=cv2.resize(img, dim, interpolation = cv2.INTER_NEAREST)
-    print("Before gray")
+    #print("Before gray")
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    print("Before finding faces")
+    #print("Before finding faces")
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-    print("num faces: ",len(faces))
+    #print("num faces: ",len(faces))
     for (x,y,w,h) in faces:
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = gray[y:y+h, x:x+w]
+        center=(x+(w/2),y+(h/2))
+        print("Center",center)
+
         # eyes = eye_cascade.detectMultiScale(roi_gray)
         # for (ex,ey,ew,eh) in eyes:
         #     cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
