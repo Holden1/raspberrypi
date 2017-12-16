@@ -13,8 +13,8 @@ camera=picamera.PiCamera()
 # camera.stop_preview()
 camera.hflip = True
 camera.vflip = True
-resX=1024
-resY=768
+resX=160
+resY=120
 camera.resolution = (resX, resY)
 camera.framerate = 30
 
@@ -59,14 +59,16 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #print("Before finding faces")
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-    if len(faces)==0:
-        if roi_gray is not None:
-            print("template matching")
-            # Apply template Matching
-            res = cv2.matchTemplate(gray, roi_gray, cv2.TM_CCOEFF)
-            min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-            top_left=max_loc
-            faces=[[top_left[0],top_left[1],top_left[0] + width, top_left[1] + height]]
+
+    ##template matching?
+    # if len(faces)==0:
+    #     if roi_gray is not None:
+    #         print("template matching")
+    #         # Apply template Matching
+    #         res = cv2.matchTemplate(gray, roi_gray, cv2.TM_CCOEFF)
+    #         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    #         top_left=max_loc
+    #         faces=[[top_left[0],top_left[1],top_left[0] + width, top_left[1] + height]]
 
 
     errorX=0
