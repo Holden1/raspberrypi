@@ -16,19 +16,16 @@ camera.framerate = 30
 
 
 highResCap = PiRGBArray(camera)
-highResStream = camera.capture_continuous(highResCap, format="bgr", use_video_port=True)
-time.sleep(2.0)
-print("done warming up")
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
-while True:
+for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=True):
     print("In loop")
     start=time.clock()
     stream = io.BytesIO()
     # capture into stream
-    camera.capture(highResCap, format='bgr', use_video_port=True)
+    #camera.capture(highResCap, format='bgr', use_video_port=True)
     # convert image into numpy array
     img=highResCap.array
 
