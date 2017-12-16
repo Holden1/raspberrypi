@@ -11,7 +11,7 @@ camera=picamera.PiCamera()
 # camera.stop_preview()
 camera.hflip = True
 camera.vflip = True
-camera.resolution = (1024, 768)
+camera.resolution = (320, 240)
 camera.framerate = 30
 
 
@@ -34,12 +34,12 @@ while True:
     # turn the array into a cv2 image
     img = cv2.imdecode(data, 1)
 
-    print("after to img")
-    r = 1000.0 / img.shape[1]
-    dim = (1000, int(img.shape[0] * r))
-    print("Before resize")
-
-    img=cv2.resize(img, dim, interpolation = cv2.INTER_NEAREST)
+    # print("after to img")
+    # r = 1000.0 / img.shape[1]
+    # dim = (1000, int(img.shape[0] * r))
+    # print("Before resize")
+    #
+    # img=cv2.resize(img, dim, interpolation = cv2.INTER_NEAREST)
     print("Before gray")
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     print("Before finding faces")
