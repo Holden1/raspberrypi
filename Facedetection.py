@@ -28,11 +28,9 @@ while True:
     start=time.clock()
     stream = io.BytesIO()
     # capture into stream
-    camera.capture(stream, format='bgr', use_video_port=True)
+    camera.capture(highResCap, format='bgr', use_video_port=True)
     # convert image into numpy array
-    data = np.fromstring(stream.getvalue(), dtype=np.uint8)
-    # turn the array into a cv2 image
-    img = cv2.imdecode(data, 1)
+    img=highResCap.array
 
     # print("after to img")
     # r = 1000.0 / img.shape[1]
