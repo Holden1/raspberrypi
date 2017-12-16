@@ -58,13 +58,13 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     errorX=0
     #print("num faces: ",len(faces))
     for (x,y,w,h) in faces:
-        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-        roi_gray = gray[y:y+h, x:x+w]
-        roi_color = gray[y:y+h, x:x+w]
+        # cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+        # roi_gray = gray[y:y+h, x:x+w]
+        # roi_color = gray[y:y+h, x:x+w]
         center=[x+(w/2),y+(h/2)]
-        print("Center",center)
+        #print("Center",center)
         errorX=(resX/2)-center[0] # we want to center on x-axis
-        print("Error x",errorX)
+        #print("Error x",errorX)
 
         # eyes = eye_cascade.detectMultiScale(roi_gray)
         # for (ex,ey,ew,eh) in eyes:
