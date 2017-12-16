@@ -69,7 +69,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
             res = cv2.matchTemplate(gray, roi_gray, cv2.TM_CCOEFF_NORMED)
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
             top_left=max_loc
-            if(res>template_threshold):
+            if(res>max_val):
                 faces=[[top_left[0],top_left[1],top_left[0] + width, top_left[1] + height]]
 
 
