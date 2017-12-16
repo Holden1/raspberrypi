@@ -26,7 +26,7 @@ errorX=0
 errorXSum=0
 errorY=0
 
-kP=0.2
+kP=0.02
 kI=0.0
 kD=0
 
