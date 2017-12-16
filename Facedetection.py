@@ -32,6 +32,8 @@ while True:
     # convert image into numpy array
     img=highResCap.array
 
+    highResCap.truncate()
+    highResCap.seek(0)
     # print("after to img")
     # r = 1000.0 / img.shape[1]
     # dim = (1000, int(img.shape[0] * r))
