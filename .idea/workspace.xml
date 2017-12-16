@@ -17,8 +17,8 @@
       <file leaf-file-name="Facedetection.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Facedetection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="65" column="15" lean-forward="false" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
+            <state relative-caret-position="561">
+              <caret line="72" column="21" lean-forward="true" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -162,13 +162,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1513265680153</updated>
-    </task>
-    <task id="LOCAL-00001" summary="picam">
-      <created>1513341590774</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1513341590774</updated>
     </task>
     <task id="LOCAL-00002" summary="picam">
       <created>1513341670945</created>
@@ -506,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513428320989</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="continuous">
+      <created>1513428542752</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1513428542753</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -599,8 +599,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Facedetection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="65" column="15" lean-forward="false" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
+        <state relative-caret-position="561">
+          <caret line="72" column="21" lean-forward="true" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
