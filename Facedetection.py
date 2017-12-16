@@ -38,6 +38,7 @@ eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 roi_gray=None
 width=None
 height=None
+template_threshold=0.9
 
 for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=True):
     start=time.clock()
@@ -61,14 +62,15 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
     ##template matching?
-    # if len(faces)==0:
-    #     if roi_gray is not None:
-    #         print("template matching")
-    #         # Apply template Matching
-    #         res = cv2.matchTemplate(gray, roi_gray, cv2.TM_CCOEFF)
-    #         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    #         top_left=max_loc
-    #         faces=[[top_left[0],top_left[1],top_left[0] + width, top_left[1] + height]]
+    if len(faces)==0:
+        if roi_gray is not None:
+            print("template matching")
+            # Apply template Matching
+            res = cv2.matchTemplate(gray, roi_gray, cv2.TM_CCOEFF_NORMED)
+            min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+            top_left=max_loc
+            if(res>template_threshold):
+                faces=[[top_left[0],top_left[1],top_left[0] + width, top_left[1] + height]]
 
 
     errorX=0
