@@ -26,8 +26,8 @@ errorX=0
 errorXSum=0
 errorY=0
 
-kP=0.2
-kI=0.01
+kP=0.3
+kI=0.0
 kD=0
 
 highResCap = PiRGBArray(camera)
