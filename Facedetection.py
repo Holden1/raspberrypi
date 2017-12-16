@@ -63,7 +63,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
         if roi_gray is not None:
             print("template matching")
             # Apply template Matching
-            res = cv2.matchTemplate(img.astype(np.uint8), roi_gray.astype(np.uint8), cv2.TM_CCOEFF)
+            res = cv2.matchTemplate(gray, roi_gray, cv2.TM_CCOEFF)
             min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
             top_left=max_loc
             faces=[[top_left[0],top_left[1],top_left[0] + width, top_left[1] + height]]
