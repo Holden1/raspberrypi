@@ -27,7 +27,7 @@ errorXSum=0
 errorY=0
 
 kP=0.2
-kI=0.001
+kI=0.0
 kD=0
 
 highResCap = PiRGBArray(camera)
@@ -54,7 +54,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     #print("Before gray")
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #print("Before finding faces")
-    faces = face_cascade.detectMultiScale(gray, 1.3, 3)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     errorX=0
     #print("num faces: ",len(faces))
     for (x,y,w,h) in faces:
