@@ -4,6 +4,7 @@ import cv2
 import time
 import picamera
 from picamera.array import PiRGBArray
+from subprocess import call
 
 camera=picamera.PiCamera()
 # camera.start_preview()
@@ -11,9 +12,17 @@ camera=picamera.PiCamera()
 # camera.stop_preview()
 camera.hflip = True
 camera.vflip = True
-camera.resolution = (320, 240)
+resX=320
+resY=240
+camera.resolution = (resX, resY)
 camera.framerate = 30
 
+min_servo_val=70
+max_servo_val=200
+servo_val=130
+
+errorX=0
+errorY=0
 
 highResCap = PiRGBArray(camera)
 
@@ -46,12 +55,15 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = gray[y:y+h, x:x+w]
-        center=(x+(w/2),y+(h/2))
+        center=[x+(w/2),y+(h/2)]
         print("Center",center)
+        errorX=center[0]-(resX/2) # we want to center on x-axis
+        print("Error x",errorX)
 
         # eyes = eye_cascade.detectMultiScale(roi_gray)
         # for (ex,ey,ew,eh) in eyes:
         #     cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+
     print(time.clock()-start)
     #cv2.imshow('img',img)
     #cv2.waitKey(1)
