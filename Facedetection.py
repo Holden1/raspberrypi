@@ -76,7 +76,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     errorX=0
     #print("num faces: ",len(faces))
     for (x,y,w,h) in faces:
-        # cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
         width=w
         height=h
@@ -90,6 +90,8 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
         # for (ex,ey,ew,eh) in eyes:
         #     cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 
+    cv2.imshow("bla",img)
+    cv2.waitKey(1)
     errorXSum+=errorX
     servo_val=servo_val+(errorX*kP)+(errorXSum*kI)
     servo_val=np.clip(servo_val,min_servo_val,max_servo_val)
