@@ -57,7 +57,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
         roi_color = gray[y:y+h, x:x+w]
         center=[x+(w/2),y+(h/2)]
         print("Center",center)
-        errorX=center[0]-(resX/2) # we want to center on x-axis
+        errorX=(resX/2)-center[0] # we want to center on x-axis
         print("Error x",errorX)
 
         # eyes = eye_cascade.detectMultiScale(roi_gray)
