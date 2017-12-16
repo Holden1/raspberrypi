@@ -75,7 +75,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
         # cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
         width=w
-        heigth=h
+        height=h
         # roi_color = gray[y:y+h, x:x+w]
         center=[x+(w/2),y+(h/2)]
         print("Center",center)
