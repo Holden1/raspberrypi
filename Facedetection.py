@@ -60,7 +60,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     #print("Before finding faces")
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     if len(faces)==0:
-        if roi_gray != None:
+        if roi_gray.any():
             print("template matching")
             # Apply template Matching
             res = cv2.matchTemplate(img, roi_gray, cv2.TM_CCOEFF)
