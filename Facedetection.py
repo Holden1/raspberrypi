@@ -35,7 +35,6 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=True):
-    print("In loop")
     start=time.clock()
     stream = io.BytesIO()
     # capture into stream
@@ -71,7 +70,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
         #     cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
     servo_val=servo_val+(errorX*kP)
     servo_val=np.clip(servo_val,min_servo_val,max_servo_val)
-    call(["echo 2=",str(servo_val)," > /dev/servoblaster"],shell=True)
+    call(["echo 2=",str(servo_val)," > /dev/servoblaster"])
     print(time.clock()-start)
     #cv2.imshow('img',img)
     #cv2.waitKey(1)
