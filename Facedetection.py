@@ -59,7 +59,7 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
     #print("Before gray")
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #print("Before finding faces")
-    faces = face_cascade.detectMultiScale(gray, 1.1, 5)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
     ##template matching?
     if len(faces)==0:
