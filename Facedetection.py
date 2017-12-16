@@ -24,6 +24,10 @@ servo_val=130
 errorX=0
 errorY=0
 
+kP=0.1
+kI=0
+kD=0
+
 highResCap = PiRGBArray(camera)
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -64,8 +68,8 @@ for foo in camera.capture_continuous(highResCap, format="bgr", use_video_port=Tr
         # eyes = eye_cascade.detectMultiScale(roi_gray)
         # for (ex,ey,ew,eh) in eyes:
         #     cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
-
-    servo_val=np.clip(servo_val+errorX,min_servo_val,max_servo_val)
+    servo_val=servo_val+(errorX*kP)
+    servo_val=np.clip(servo_val,min_servo_val,max_servo_val)
     os.system("echo 2="+str(servo_val)+" > /dev/servoblaster")
     print(time.clock()-start)
     #cv2.imshow('img',img)
