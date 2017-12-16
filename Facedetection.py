@@ -48,7 +48,7 @@ while True:
     dim = (1000, int(img.shape[0] * r))
     print("Before resize")
 
-    img=cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    img=cv2.resize(img, dim, interpolation = cv2.INTER_NEAREST)
     print("Before gray")
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     print("Before finding faces")
